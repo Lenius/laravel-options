@@ -4,17 +4,24 @@ namespace Appstract\Options\Test;
 
 use Appstract\Options\OptionFacade;
 use Appstract\Options\OptionsServiceProvider;
-use Orchestra\Testbench\TestCase;
+use Illuminate\Foundation\Application;
+use Orchestra\Testbench\TestCase as Orchestra;
 
-abstract class BaseTest extends TestCase
+abstract class TestCase extends Orchestra
 {
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+    }
+
     /**
      * Define environment setup.
      *
-     * @param  \Illuminate\Foundation\Application  $app
-     * @return void
+     * @param  Application  $app
      */
-    protected function getEnvironmentSetUp($app)
+    protected function getEnvironmentSetUp($app): void
     {
         // Setup default database to use sqlite :memory:
         $app['config']->set('database.default', 'testbench');
@@ -29,22 +36,12 @@ abstract class BaseTest extends TestCase
     }
 
     /**
-     * Setup the test environment.
-     */
-    public function setUp(): void
-    {
-        parent::setUp();
-
-        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-    }
-
-    /**
      * Get package providers.
      *
-     * @param  \Illuminate\Foundation\Application  $app
+     * @param  Application  $app
      * @return array
      */
-    protected function getPackageProviders($app)
+    protected function getPackageProviders($app): array
     {
         return [
             OptionsServiceProvider::class,
@@ -54,10 +51,10 @@ abstract class BaseTest extends TestCase
     /**
      * Get package aliases.
      *
-     * @param  \Illuminate\Foundation\Application  $app
+     * @param  Application  $app
      * @return array
      */
-    protected function getPackageAliases($app)
+    protected function getPackageAliases($app): array
     {
         return [
             'Option' => OptionFacade::class,

@@ -7,6 +7,7 @@
 .DS_Store?
 ehthumbs.db
 Thumbs.db
+.phpunit.cache
 
 # IDE
 *.sublime-*
@@ -19,3 +20,4 @@ composer.lock
 docs
 vendor
 .phpunit.result.cache
+
