@@ -62,6 +62,6 @@ final class HelperTest extends TestCase
         option(['foo' => ['bar', 'baz']]);
 
         $this->assertDatabaseHas('options', ['key' => 'foo', 'value' => '["bar","baz"]']);
-        $this->assertEquals(option('foo'), ['bar', 'baz']);
+        $this->assertEquals(['bar', 'baz'], option('foo'));
     }
 }
