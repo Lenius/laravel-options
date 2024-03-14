@@ -53,5 +53,7 @@
                 "Option": "Appstract\\Options\\OptionFacade"
             }
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
