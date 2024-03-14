@@ -1,0 +1,17 @@
+parameters:
+	ignoreErrors:
+
+		-
+			message: "#^Call to an undefined static method Appstract\\\\Options\\\\Option\\:\\:where\\(\\)\\.$#"
+			count: 3
+			path: src/Option.php
+
+		-
+			message: "#^Call to an undefined static method Appstract\\\\Options\\\\Option\\:\\:updateOrCreate\\(\\)\\.$#"
+			count: 1
+			path: src/Option.php
+
+		-
+			message: "#^Call to an undefined static method Appstract\\\\Options\\\\OptionFacade\\:\\:set\\(\\)\\.$#"
+			count: 1
+			path: src/Console/OptionSetCommand.php
